@@ -1,5 +1,5 @@
-# bbrplus-5.11
-Linux BBRplus Kernel 5.11 ported from BBRplus 4.14  
+# bbrplus-5.13
+Linux BBRplus Kernel 5.13 ported from BBRplus 4.14  
 (note that it does NOT based on 5.11 version of BBR, instead just simple ported the 4.14 version of BBRplus)
 <br/>
 <br/>
@@ -14,7 +14,7 @@ https://github.com/cx9208/bbrplus
 ## some improvements as Jan-2021
 
 ###  i)   merged official v4.14 tcp_bbr patches between 2018-20 into bbrplus  
-###  ii)  keep official v5.11 tcp_bbr module in the kernel, now can do either  
+###  ii)  keep official v5.13 tcp_bbr module in the kernel, now can do either  
 <br/>
 net.ipv4.tcp_congestion_control = bbrplus    or    net.ipv4.tcp_congestion_control = bbr   
 <br/>
@@ -29,33 +29,33 @@ net.ipv4.tcp_congestion_control = bbrplus    or    net.ipv4.tcp_congestion_contr
 <br/>
 
 ### 1) get convert patch on this repository, use git or direct download
-        (e.g., convert_official_linux-5.11.x_src_to_bbrplus.patch)
+        (e.g., convert_official_linux-5.13.x_src_to_bbrplus.patch)
 
 <br/>
 <br/>
 
 ### 2) download officaial linux kernel
-        say 5.11.22       
-            wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.22.tar.gz
+        say 5.13.7       
+            wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.7.tar.gz
 
 <br/>
 <br/>
 
 ### 3) extract the tarball & cd extracted directory
-        tar zxvf linux-5.11.22.tar.gz && cd linux-5.11.22
+        tar zxvf linux-5.13.7.tar.gz && cd linux-5.13.7
 
 <br/>
 <br/>
 
 ### 4) copy convert patch to extracted kernel directory
         something like
-            cp ../convert_official_linux-5.11.x_src_to_bbrplus.patch .
+            cp ../convert_official_linux-5.13.x_src_to_bbrplus.patch .
 
 <br/>
 <br/>
 
 ### 5) do the patch job
-        patch -p1 < convert_official_linux-5.11.x_src_to_bbrplus.patch
+        patch -p1 < convert_official_linux-5.13.x_src_to_bbrplus.patch
 
 <br/>
 <br/>
