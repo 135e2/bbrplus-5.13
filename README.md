@@ -1,6 +1,6 @@
 # bbrplus-5.13
 Linux BBRplus Kernel 5.13 ported from BBRplus 4.14  
-(note that it does NOT based on 5.11 version of BBR, instead just simple ported the 4.14 version of BBRplus)
+(note that it does NOT based on 5.13 version of BBR, instead just simple ported the 4.14 version of BBRplus)
 <br/>
 <br/>
 <br/>
