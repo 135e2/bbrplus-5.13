@@ -15,22 +15,25 @@ diff -ruaN a/include/net/inet_connection_sock.h b/include/net/inet_connection_so
 diff -ruaN a/include/net/tcp.h b/include/net/tcp.h
 --- a/include/net/tcp.h	2021-05-19 16:30:06.000000000 +0800
 +++ b/include/net/tcp.h	2021-05-22 11:33:34.898841467 +0800
-@@ -576,6 +576,8 @@
+@@ -577,6 +577,8 @@
  #endif
  /* tcp_output.c */
  
 +u32 tcp_tso_autosize(const struct sock *sk, unsigned int mss_now,
-+		     int min_tso_segs);
++                    int min_tso_segs);
  void __tcp_push_pending_frames(struct sock *sk, unsigned int cur_mss,
- 			       int nonagle);
+                               int nonagle);
  int __tcp_retransmit_skb(struct sock *sk, struct sk_buff *skb, int segs);
-@@ -1084,6 +1086,8 @@
- 	void (*pkts_acked)(struct sock *sk, const struct ack_sample *sample);
+@@ -1062,6 +1064,9 @@ struct tcp_congestion_ops {
  	/* override sysctl_tcp_min_tso_segs */
  	u32 (*min_tso_segs)(struct sock *sk);
+ 
 +	/* suggest number of segments for each skb to transmit (optional) */
 +	u32 (*tso_segs_goal)(struct sock *sk);
++    
  	/* call when packets are delivered to update cwnd and pacing rate,
+ 	 * after all the ca_state processing. (optional)
+ 	 */
 diff -ruaN a/net/ipv4/Kconfig b/net/ipv4/Kconfig
 --- a/net/ipv4/Kconfig	2021-05-19 16:30:06.000000000 +0800
 +++ b/net/ipv4/Kconfig	2021-05-22 11:33:34.898841467 +0800
